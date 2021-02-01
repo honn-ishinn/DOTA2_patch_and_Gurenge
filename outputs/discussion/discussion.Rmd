@@ -1,0 +1,48 @@
+---
+title: "Discussion"
+author: "Hong Shi"
+date: "2/2/2021"
+output: pdf_document
+---
+
+In this data gathering practice, I tried two methods collecting the data: one through twitter API, and the other 
+
+```{r}
+cat(gurenge_text)
+```
+```{r}
+cat("僕を連れて 進め
+
+2357つうsGgl
+
+消せない夢も 止まれない今も
+
+誰かのために強くなれるなら", file = "outputs/gurenge_text/try.txt")
+```
+
+```{r}
+class(gurenge_text)
+```
+
+```{r}
+library(utf8)
+```
+
+```{r}
+t1 <- data.frame(a = c("強くなれる"), stringsAsFactors = F)
+t1
+```
+```{r}
+gurenge_text <- tesseract::ocr(here::here("inputs/image/gurenge_kashi.jpg"), engine = tesseract("jpn"))
+Encoding(gurenge_text) <- "UTF-16"
+write.table(gurenge_text,"outputs/gurenge_text/trykashi.txt",row.names=F,col.names=F,quote=F)
+```
+
+
+```{r}
+t2 <- data.frame(a = c("強くなる"), stringsAsFactors=F)
+Encoding(t2[,"a"]) <- "UTF-16"
+write.table(t2,"outputs/gurenge_text/try2.txt",row.names=F,col.names=F,quote=F)
+```
+
+
