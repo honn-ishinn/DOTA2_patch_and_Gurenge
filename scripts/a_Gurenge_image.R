@@ -34,19 +34,16 @@ library(here)
 gurenge_text <- tesseract::ocr(here::here("inputs/image/gurenge_kashi.jpg"), engine = tesseract("jpn"))
 
 Encoding(gurenge_text) <- "UTF-16"
-
+Encoding(gurenge_text)
 write.table(gurenge_text,"outputs/gurenge_text/gurenge_kashi.txt",row.names=F,col.names=F,quote=F)
 
 # a wrong example
 
 wrong_text <- tesseract::ocr(here::here("inputs/image/gurenge_kashi.jpg"), engine = tesseract("jpn"))
 
+Encoding(wrong_text)
+
 cat(wrong_text, file = "outputs/gurenge_text/wrong_text.txt")
-
-
-
-
-
 
 
 

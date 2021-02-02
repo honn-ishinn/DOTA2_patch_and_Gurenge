@@ -2,47 +2,63 @@
 title: "Discussion"
 author: "Hong Shi"
 date: "2/2/2021"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
-In this data gathering practice, I tried two methods collecting the data: one through twitter API, and the other 
+In this data gathering practice, I tried two methods collecting the data: (1) one through twitter API using `rtweet` package, and (2) the other through OCR using `tesseract` package: 
 
-```{r}
-cat(gurenge_text)
-```
-```{r}
-cat("僕を連れて 進め
+# (1) Using `rtweet` package
 
-2357つうsGgl
+Get DOTA2 patch update tweets( A popular 5v5 MOBA game. OpenAI Five launched a machine learning project in this game and the OpenAI system showed the ability to defeat professional teams. Web URL of the project: https://openai.com/projects/five/)
+&nbsp;
+I went through following steps to gather DOTA2 patch update data:
 
-消せない夢も 止まれない今も
+* Since I would like to get tweets information from the official DOTA2 account, I used the `get_timeline()` function and apply to user "DOTA2" to collect all tweets published from the official account (raw data).
 
-誰かのために強くなれるなら", file = "outputs/gurenge_text/try.txt")
-```
+* When I wanted to save the raw data into csv file, an error showed that `hashtags` is a list column so I could not save the data to csv. I googled a function to convety any list columns to character type, and successfully save the csv file after applying the function.
 
-```{r}
-class(gurenge_text)
-```
+* After my inspection of tweet texts, I notice that not all tweets are related to gameplay updates. But as a player of DOTA2, I understand the pattern of patch updates `"\\<[6,7]\\.[0-9]{2}.?\\>"` ^[ Detailed explanation of this pattern in "inputs/scripts/01_data2_patch_tweet"], so I could use Regex to select tweets related to updates.
 
-```{r}
-library(utf8)
-```
+Thoughts and possible followups: Functions in `rtweet` require some understandings of features in tweet ( e.g.: like, follow, etc.) I could use the dataset to analyze the popularity of each patch. 
 
-```{r}
-t1 <- data.frame(a = c("強くなれる"), stringsAsFactors = F)
-t1
-```
-```{r}
-gurenge_text <- tesseract::ocr(here::here("inputs/image/gurenge_kashi.jpg"), engine = tesseract("jpn"))
-Encoding(gurenge_text) <- "UTF-16"
-write.table(gurenge_text,"outputs/gurenge_text/trykashi.txt",row.names=F,col.names=F,quote=F)
+
+# (2) Using `tesseract` package
+
+```{r, message=FALSE, warning=FALSE}
+library(tesseract)
+library(tidyverse)
+library(here)
+library(bookdown)
+# tesseract_download("jpn") if Japanese is not installed
 ```
 
+Get the lyrics of a Japanese song「紅蓮華」 (Gurenge) in txt format.
+&nbsp;
+I went through following steps to gather the lyrics in Japanese:
 
-```{r}
-t2 <- data.frame(a = c("強くなる"), stringsAsFactors=F)
-Encoding(t2[,"a"]) <- "UTF-16"
-write.table(t2,"outputs/gurenge_text/try2.txt",row.names=F,col.names=F,quote=F)
+* I chose an image of with the "Gurenge" lyrics ( Source from Twitter)
+
+* I noticed that Japanese language was not installed in `tesseract` package, so I installed the Japanese language engine and extract the text from it. And it seems that `tesseract` recognizes Japanese characters relatively poor ( falsely recognize the Kanji "震" as "選", "睨" as "明" and completely mess up the Hiragana sentence "どうしたって" as "2357つうsGgl" ). NOTE: I could display proper Japanese characters in R markdown, but not in html document.
+```{r, echo=FALSE}
+show_output <- read_file(here::here("outputs/gurenge_text/gurenge_kashi.txt"))
+cat(show_output)
 ```
+
+* (This made me suffer almost a whole night figuring out the solution) After getting the text of lyrics, I would like to save it to a txt file. However, the output text file is shown below, even though I wanted the text file to match what I show in R console:
+```{r, echo=FALSE, message=FALSE}
+wrong_example <- read_file(here::here("outputs/gurenge_text/wrong_text.txt"))
+cat(wrong_example)
+```
+
+I understood that the "<U+XXXX>" is the Unicode representation of the Japanese character and the text I extracted using `tesseract` package is a character variable with Unicodes. I spent a great amount of time googling and figured out that the text of the character variable it self is already encoded in "UTF-8". So if I save the encoded "UTF-8" text, no matter which encoding method I chose to open the file, the text file will always display the Unicode text as shown above. So I need to reencode the text `tesseract` generated first, and then save the txt file to make sure I could display the exact Japanese characters in .txt file.
+
+However, the output html document document still display the Japanese character in Unicode form and I could not knit the pdf document due to error:
+! Package inputenc Error: Unicode character 「 (U+300C)
+(inputenc)                not set up for use with LaTeX. 
+
+I would like to get some follow up analysis about DOTA2 patch updates hopefully in reading week :) And also have a closer look of Unicode output to solve my knitting problems.
 
 

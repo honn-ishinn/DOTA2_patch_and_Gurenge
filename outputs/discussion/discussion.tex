@@ -1,0 +1,297 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Discussion},
+  pdfauthor={Hong Shi},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Discussion}
+\author{Hong Shi}
+\date{2/2/2021}
+
+\begin{document}
+\maketitle
+
+In this data gathering practice, I tried two methods collecting the
+data: (1) one through twitter API using \texttt{rtweet} package, and (2)
+the other through OCR using \texttt{tesseract} package:
+
+\hypertarget{using-rtweet-package}{%
+\section{\texorpdfstring{(1) Using \texttt{rtweet}
+package}{(1) Using rtweet package}}\label{using-rtweet-package}}
+
+Get DOTA2 patch update tweets( A popular 5v5 MOBA game. OpenAI Five
+launched a machine learning project in this game and the OpenAI system
+showed the ability to defeat professional teams. Web URL of the project:
+\url{https://openai.com/projects/five/}) ~ I went through following
+steps to gather DOTA2 patch update data:
+
+\begin{itemize}
+\item
+  Since I would like to get tweets information from the official DOTA2
+  account, I used the \texttt{get\_timeline()} function and apply to
+  user ``DOTA2'' to collect all tweets published from the official
+  account (raw data).
+\item
+  When I wanted to save the raw data into csv file, an error showed that
+  \texttt{hashtags} is a list column so I could not save the data to
+  csv. I googled a function to convety any list columns to character
+  type, and successfully save the csv file after applying the function.
+\item
+  After my inspection of tweet texts, I notice that not all tweets are
+  related to gameplay updates. But as a player of DOTA2, I understand
+  the pattern of patch updates
+  \texttt{"\textbackslash{}\textbackslash{}\textless{}{[}6,7{]}\textbackslash{}\textbackslash{}.{[}0-9{]}\{2\}.?\textbackslash{}\textbackslash{}\textgreater{}"}
+  \footnote{Detailed explanation of this pattern in
+    ``inputs/scripts/01\_data2\_patch\_tweet''}, so I could use Regex to
+  select tweets related to updates.
+\end{itemize}
+
+Thoughts and possible followups: Functions in \texttt{rtweet} require
+some understandings of features in tweet ( e.g.: like, follow, etc.) I
+could use the dataset to analyze the popularity of each patch.
+
+\hypertarget{using-tesseract-package}{%
+\section{\texorpdfstring{(2) Using \texttt{tesseract}
+package}{(2) Using tesseract package}}\label{using-tesseract-package}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tesseract)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(here)}
+\KeywordTok{library}\NormalTok{(bookdown)}
+\CommentTok{# tesseract_download("jpn") if Japanese is not installed}
+\end{Highlighting}
+\end{Shaded}
+
+Get the lyrics of a Japanese song「紅蓮華」 (Gurenge) in txt format. ~ I
+went through following steps to gather the lyrics in Japanese:
+
+\begin{itemize}
+\item
+  I chose an image of with the ``Gurenge'' lyrics ( Source from Twitter)
+\item
+  I noticed that Japanese language was not installed in
+  \texttt{tesseract} package, so I installed the Japanese language
+  engine and extract the text from it. And it seems that
+  \texttt{tesseract} recognizes Japanese characters relatively poor (
+  falsely recognize the Kanji ``震'' as ``選'', ``睨'' as ``明'' and
+  completely mess up the Hiragana sentence ``どうしたって'' as
+  ``2357つうsGgl'' ).
+\end{itemize}
+
+\begin{verbatim}
+## [1] "UTF-8"
+\end{verbatim}
+
+\begin{verbatim}
+## mlau<U+4EE4>                   0:54        $@<U+30A4>@( 69%(<U+8A08><U+30EA><U+30BF>
+## <U+304F><U+30E1>><U+30E2>                               @<U+3002> <U+4E2D>
+## 
+## <U+7D05><U+84EE><U+83EF> <U+6B4C><U+8A5E>
+## 
+## <U+5F37><U+304F><U+306A><U+308C><U+308B><U+7406><U+7531><U+3092><U+77E5><U+3063><U+305F>
+## 
+## <U+50D5><U+3092><U+9023><U+308C><U+3066> <U+9032><U+3081>
+## 
+## <U+6CE5><U+3060><U+3089><U+3051><U+306E><U+8D70><U+99AC><U+706F><U+306B><U+9154><U+3046>
+## 
+## <U+5F37><U+3070><U+308B><U+5FC3> <U+9078><U+3048><U+308B><U+624B><U+306F>
+## 
+## <U+63B4><U+307F><U+305F><U+3044><U+3082><U+306E><U+304C><U+3042><U+308B>
+## 
+## <U+305D><U+308C><U+3060><U+3051><U+3055>
+## 
+## <U+591C><U+306E><U+5302><U+3044><U+306B>(| spend all thirty nights)
+## 
+## <U+7A7A><U+660E><U+3093><U+3067><U+3082>(Storing into the sky)
+## 
+## <U+5909><U+308F><U+3063><U+3066><U+3044><U+3051><U+308B><U+306E><U+306F> <U+81EA><U+5206><U+81EA><U+8EAB><U+3060><U+3051>
+## 
+## <U+305D><U+308C><U+3060><U+3051><U+3055>
+## 
+## <U+5F37><U+304F><U+306A><U+308C><U+308B><U+7406><U+7531><U+3092><U+77E5><U+3063><U+305F>
+## 
+## <U+50D5><U+3092><U+9023><U+308C><U+3066> <U+9032><U+3081>
+## 
+## 2357<U+3064><U+3046>sGgl
+## 
+## <U+6D88><U+305B><U+306A><U+3044><U+5922><U+3082> <U+6B62><U+307E><U+308C><U+306A><U+3044><U+4ECA><U+3082>
+## 
+## <U+8AB0><U+304B><U+306E><U+305F><U+3081><U+306B><U+5F37><U+304F><U+306A><U+308C><U+308B><U+306A><U+3089>
+## 
+## <U+3042><U+308A><U+304C><U+3068><U+3046> <U+60B2><U+3057><U+307F><U+3088>
+## 
+## <U+4E16><U+754C><U+306B><U+6253><U+3061><U+306E><U+3081><U+3055><U+308C><U+3066>
+## 
+## <U+89D2><U+3051><U+308B><U+610F><U+5473><U+3092><U+77E5><U+3063><U+305F>
+## 
+##          <U+3007>         <U+3007>         <U+3081>         <U+30F2>
+## 
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  (This made me suffer almost a whole night figuring out the solution)
+  After getting the text of lyrics, I would like to save it to a txt
+  file. However, the output text file is shown below, even though I
+  wanted the text file to match what I show in R console:
+\end{itemize}
+
+\begin{verbatim}
+## mlau<U+4EE4>                   0:54        $@<U+30A4>@( 69%(<U+8A08><U+30EA><U+30BF>
+## <U+304F><U+30E1>><U+30E2>                               @<U+3002> <U+4E2D>
+## 
+## <U+7D05><U+84EE><U+83EF> <U+6B4C><U+8A5E>
+## 
+## <U+5F37><U+304F><U+306A><U+308C><U+308B><U+7406><U+7531><U+3092><U+77E5><U+3063><U+305F>
+## 
+## <U+50D5><U+3092><U+9023><U+308C><U+3066> <U+9032><U+3081>
+## 
+## <U+6CE5><U+3060><U+3089><U+3051><U+306E><U+8D70><U+99AC><U+706F><U+306B><U+9154><U+3046>
+## 
+## <U+5F37><U+3070><U+308B><U+5FC3> <U+9078><U+3048><U+308B><U+624B><U+306F>
+## 
+## <U+63B4><U+307F><U+305F><U+3044><U+3082><U+306E><U+304C><U+3042><U+308B>
+## 
+## <U+305D><U+308C><U+3060><U+3051><U+3055>
+## 
+## <U+591C><U+306E><U+5302><U+3044><U+306B>(| spend all thirty nights)
+## 
+## <U+7A7A><U+660E><U+3093><U+3067><U+3082>(Storing into the sky)
+## 
+## <U+5909><U+308F><U+3063><U+3066><U+3044><U+3051><U+308B><U+306E><U+306F> <U+81EA><U+5206><U+81EA><U+8EAB><U+3060><U+3051>
+## 
+## <U+305D><U+308C><U+3060><U+3051><U+3055>
+## 
+## <U+5F37><U+304F><U+306A><U+308C><U+308B><U+7406><U+7531><U+3092><U+77E5><U+3063><U+305F>
+## 
+## <U+50D5><U+3092><U+9023><U+308C><U+3066> <U+9032><U+3081>
+## 
+## 2357<U+3064><U+3046>sGgl
+## 
+## <U+6D88><U+305B><U+306A><U+3044><U+5922><U+3082> <U+6B62><U+307E><U+308C><U+306A><U+3044><U+4ECA><U+3082>
+## 
+## <U+8AB0><U+304B><U+306E><U+305F><U+3081><U+306B><U+5F37><U+304F><U+306A><U+308C><U+308B><U+306A><U+3089>
+## 
+## <U+3042><U+308A><U+304C><U+3068><U+3046> <U+60B2><U+3057><U+307F><U+3088>
+## 
+## <U+4E16><U+754C><U+306B><U+6253><U+3061><U+306E><U+3081><U+3055><U+308C><U+3066>
+## 
+## <U+89D2><U+3051><U+308B><U+610F><U+5473><U+3092><U+77E5><U+3063><U+305F>
+## 
+##          <U+3007>         <U+3007>         <U+3081>         <U+30F2>
+\end{verbatim}
+
+I understood that the ``\textless U+XXXX\textgreater{}'' is the Unicode
+representation of the Japanese character and the text I extracted using
+\texttt{tesseract} package is a character variable with Unicodes. I
+spent a great amount of time googling and figured out that the text of
+the character variable it self is already encoded in ``UTF-8''. So if I
+save the encoded ``UTF-8'' text, no matter which encoding method I chose
+to open the file, the text file will always display the Unicode text as
+shown above. So I need to reencode the text \texttt{tesseract} generated
+first, and then save the txt file to make sure I could display the exact
+Japanese characters in .txt file.
+
+However, the output html document ( I ) I would like to get some follow
+up analysis about DOTA2 patch updates hopefully in reading week :)
+
+\end{document}
