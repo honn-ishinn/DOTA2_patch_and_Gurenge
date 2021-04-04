@@ -1,12 +1,14 @@
 ---
-title: "Discussion"
+header-includes:
+  - \usepackage{ctex}
+output: 
+  pdf_document:
+    latex_engine: xelatex
 author: "Hong Shi"
 date: "2/2/2021"
-output:
-  html_document:
-    df_print: paged
-  pdf_document: default
+title: "Discussion"
 ---
+
 
 In this data gathering practice, I tried two methods collecting the data: (1) one through twitter API using `rtweet` package, and (2) the other through OCR using `tesseract` package: 
 
